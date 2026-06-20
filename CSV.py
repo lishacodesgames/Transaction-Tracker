@@ -9,8 +9,7 @@ from datetime import datetime
 
 class Transactions:
    FILE = "transactions.csv" # static class variable
-   COLUMNS = ["date", "amount", "category", "description"]
-   DATETIME_FORMAT = "%d/%m/%Y %H:%M"
+   COLUMNS = ["date time", "amount", "category", "description"]
 
    @classmethod # basically like static
    def init_csv(cls): # cls = the class itself
@@ -23,9 +22,9 @@ class Transactions:
          dataframe.to_csv(cls.FILE, index=False) # index is basically row labels
 
    @classmethod
-   def record(cls, date, amount, category, description=""):
+   def record(cls, date_time, amount, category, description=""):
       new_entry = {
-         "date": date,
+         "date time": date_time,
          "amount": amount,
          "category": category,
          "description": description

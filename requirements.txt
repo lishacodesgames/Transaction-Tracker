@@ -1,7 +1,2 @@
-# Project dependencies
-# list dependencies specific to your project here, ONE per LINE
-
-# eg. 
-# pygame
-# pillow
-# numpy
+matplotlib
+pandas

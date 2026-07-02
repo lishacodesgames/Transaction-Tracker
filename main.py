@@ -11,4 +11,5 @@ def add():
 
 
 Transactions.init_csv()
+Transactions.show_in_range("22/06/2026 00:00", "05/07/2026 23:59")
 add()

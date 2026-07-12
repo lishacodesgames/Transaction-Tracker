@@ -27,9 +27,11 @@ def record(date_time, amount, category, description="") -> None:
    with open(CSV_FILE, 'a', newline='') as file:
       writer = csv.DictWriter(file, fieldnames=COLUMNS)
       writer.writerow(new_entry)
-   print("Transaction recorded successfully!")
+
+   print("\nTransaction recorded successfully!")
 
 def show_in_range(start_datetime: str, end_datetime: str) -> pandas.DataFrame:
+   print()
    start = datetime.strptime(start_datetime, DATETIME_FORMAT)
    end = datetime.strptime(end_datetime, DATETIME_FORMAT)
 
@@ -40,7 +42,7 @@ def show_in_range(start_datetime: str, end_datetime: str) -> pandas.DataFrame:
 
    # basically a filter
    mask = (dataframe["date time"] >= start) & (dataframe["date time"] <= end)
-   filtered_data = dataframe.loc[mask]
+   filtered_data: pandas.DataFrame = dataframe.loc[mask]
 
    if filtered_data.empty:
       print(f"No transactions found in the given date range: ({start_datetime} to {end_datetime})")

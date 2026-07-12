@@ -13,6 +13,8 @@ def get_date_time(prompt, allow_today=True) -> str:
    """
    @param allow_today: Allows user to click enter and that will automatically get current time and date
    """
+
+   print()
    date_time = input(prompt)
    if allow_today and not date_time:
       return datetime.today().strftime(DATETIME_FORMAT) # strftime converts datetime to string
@@ -21,7 +23,7 @@ def get_date_time(prompt, allow_today=True) -> str:
       valid_date_time = datetime.strptime(date_time, DATETIME_FORMAT) # strptime converts string to datetime
       return valid_date_time.strftime(DATETIME_FORMAT)
    except ValueError:
-      print("Invalid date format! (dd/mm/yyy HH:MM)")
+      print("\nInvalid date format! (dd/mm/yyy HH:MM)")
       return get_date_time(prompt, allow_today) # recursive calling until user enters valid input
 
 
@@ -29,6 +31,7 @@ def get_amount() -> int:
    try:
       amount = int(input("Enter transaction amount: "))
       if(amount <= 0):
+         print()
          raise ValueError("Amount cannot be negative!")
       return amount
    except ValueError as e:
@@ -38,7 +41,7 @@ def get_amount() -> int:
 def get_category() -> str:
    category = input(f"Enter transaction category ({format_categories()}): ").upper()
    if category not in CATEGORIES:
-      print("Invalid category!")
+      print("\nInvalid category!")
       return get_category()
    else:
       return CATEGORIES[category]
